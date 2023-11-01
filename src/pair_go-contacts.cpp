@@ -41,7 +41,7 @@ PairGoContacts::PairGoContacts(LAMMPS *lmp) : Pair(lmp)
 
 /* ---------------------------------------------------------------------- */
 
-inline void PairGoContacts::print_log(char *line)
+inline void PairGoContacts::print_log(const char *line)
 {
   if (screen) fprintf(screen, line);
   if (logfile) fprintf(logfile, line);

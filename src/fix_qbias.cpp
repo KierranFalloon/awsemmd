@@ -32,7 +32,7 @@ using namespace FixConst;
 
 /* ---------------------------------------------------------------------- */
 
-inline void FixQBias::print_log(char *line)
+inline void FixQBias::print_log(const char *line)
 {
   if (screen) fprintf(screen, line);
   if (logfile) fprintf(logfile, line);
@@ -371,7 +371,7 @@ inline double atan2(double y, double x)
 	if (x==0) {
 		if (y>0) return M_PI_2;
 		else if (y<0) return -M_PI_2;
-		else return NULL;
+		else return 0;
 	} else {
 		return atan(y/x) + (x>0 ? 0 : (y>=0 ? M_PI : -M_PI) );
 	}
