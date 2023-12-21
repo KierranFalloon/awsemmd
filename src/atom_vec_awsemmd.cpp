@@ -951,8 +951,9 @@ void AtomVecAWSEM::create_atom(int itype, double *coord)
    initialize other atom quantities
 ------------------------------------------------------------------------- */
 
-void AtomVecAWSEM::data_atom(double *coord, imageint imagetmp,
-                             const std::vector<std::string> &values)
+void AtomVecAWSEM::data_atom(double *coord, imageint imagetmp, 
+                             const std::vector<std::string> &values,
+                             std::string &extract)
 {
   int nlocal = atom->nlocal;
   if (nlocal == nmax) grow(0);
@@ -961,8 +962,7 @@ void AtomVecAWSEM::data_atom(double *coord, imageint imagetmp,
   molecule[nlocal] = ATOTAGINT(values[1].c_str());
   residue[nlocal] = ATOTAGINT(values[2].c_str());
   type[nlocal] = atoi(values[3].c_str());
-  if (type[nlocal] <= 0 || type[nlocal] > atom->ntypes)
-    error->one(FLERR,"Invalid atom type in Atoms section of data file");
+  extract = values[3];
 
   q[nlocal] = atof(values[4].c_str());
 
